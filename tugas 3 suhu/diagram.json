@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "author": "Tegar Pribadi",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 120, "left": 100, "attrs": {} },
+      { "type": "wokwi-dht22", "id": "dht1", "top": 40, "left": 280, "attrs": {} },
+      { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": 320, "left": 80, "attrs": {} },
+      {
+        "type": "wokwi-lcd2004",
+        "id": "lcd1",
+        "top": -185.6,
+        "left": -61.6,
+        "attrs": { "pins": "i2c" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "dht1:VCC", "esp:3V3", "red", [ "v-48", "h-96", "v96" ] ],
+      [ "dht1:GND", "esp:GND.2", "black", [ "v48", "h-124", "v48" ] ],
+      [ "dht1:SDA", "esp:14", "green", [ "v48", "h-153.6", "v96" ] ],
+      [ "ldr1:VCC", "esp:3V3", "blue", [ "h96", "v-96" ] ],
+      [ "ldr1:GND", "esp:GND.2", "white", [ "h115.2", "v-76.8" ] ],
+      [ "ldr1:AO", "esp:34", "gold", [ "h124.8", "v-124.8" ] ],
+      [ "lcd1:SDA", "esp:21", "gray", [ "v96", "h115.2" ] ],
+      [ "lcd1:SCL", "esp:22", "#8f4814", [ "v124.8", "h96" ] ],
+      [ "lcd1:GND", "esp:GND.2", "cyan", [ "v172.8", "h96" ] ],
+      [ "lcd1:VCC", "esp:3V3", "red", [ "v144", "h134.4" ] ]
+    ],
+    "dependencies": {}
+  }
